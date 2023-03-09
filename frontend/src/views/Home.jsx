@@ -9,12 +9,12 @@ import Col from "react-bootstrap/Col";
 
 const Home = () => {
   return (
-    <div className="main-home" >
+    <div className="main-home"  style={{backgroundColor:"#000000"}}>
       <div
         className="bg d-flex justify-content-center"
         style={{
           backgroundImage: `url(${Background})`,
-          backgroundSize: "cover",
+          // backgroundSize: "cover",
           width: "100%",
           height: "80vh",
         }}
@@ -29,11 +29,12 @@ const Home = () => {
             marginTop: "300px",
           }}
         >
-          An easy place to find your dream job, city, and home.
+          WW's creative writing archive.
         </h1>
       </div>
       <Container className="p-4">
-        <h1 className="d-flex justify-content-center p-4">Where to next?</h1>
+        <h1 className="d-flex justify-content-center p-4" style={{
+            color: '#f4f1de'}}>Explore the Archive</h1>
         <Row>
           {pageInfo.map((page) => {
             return (

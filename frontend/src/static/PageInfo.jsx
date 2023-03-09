@@ -1,25 +1,32 @@
-import JobImage from "../assets/page-images/job.png";
-import CityImage from "../assets/page-images/city.png";
-import HomeImage from "../assets/page-images/home.png";
+import StoryImage from "../assets/page-images/chrome.jpg";
+import IdeasImage from "../assets/page-images/swordhero.png";
+import WritingImage from "../assets/page-images/rift.png";
+import ReferencesImage from "../assets/page-images/orb.png";
 
 
 const pageInfo = [
     {
-      pageName: "Jobs",
-      pageImage: JobImage,
-      pageDescription: "Find your dream job!",
-      pageLink: "/jobs",
-    },
-    {
-        pageName: "Cities",
-        pageImage: CityImage,
-        pageDescription: "Find your dream city!",
+        pageName: "Stories",
+        pageImage: StoryImage,
+        pageDescription: "See all archived stories.",
         pageLink: "/cities",
     },
     {
-        pageName: "Apartments",
-        pageImage: HomeImage,
-        pageDescription: "Find your dream apartment!",
+        pageName: "Story Ideas",
+        pageImage: IdeasImage,
+        pageDescription: "See all in-progress stories",
+        pageLink: "/apartments",
+      },
+      {
+        pageName: "Writing Notes",
+        pageImage: WritingImage,
+        pageDescription: "See general writing notes",
+        pageLink: "/apartments",
+      },
+      {
+        pageName: "References",
+        pageImage: ReferencesImage,
+        pageDescription: "See analyses of popular stories",
         pageLink: "/apartments",
       },
   ];
