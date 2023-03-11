@@ -28,8 +28,8 @@ const GlobalNavbar = () => {
     style= {{backgroundColor: '#000000'}}>
       <Container>
         <Navbar.Brand href="/">
-        <div class="logo-image">
-            <img src={Logo} class="img-fluid"></img>
+        <div className="logo-image">
+            <img src={Logo} className="img-fluid"></img>
           </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

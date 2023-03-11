@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.12",
+    "reddit-embed": "^1.1.2",
+    "semantic-ui-react": "^2.1.4"
+  }
+}

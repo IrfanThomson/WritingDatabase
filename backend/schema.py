@@ -4,8 +4,8 @@ from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, fields
 
 ma = Marshmallow()
 
-class StorySchema(SQLAlchemyAutoSchema):
+class StoriesSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = File
 
-story_schema = StorySchema()
+stories_schema = StoriesSchema()

@@ -1,0 +1,24 @@
+[
+    {
+        "id" : 0,
+        "title" : "The Glass of Reality",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vSLN-kj9_Hwekuam5Ud69tchbKXrqaiuea39vpAw5CapO69yjcCOQm8IMz2MfgKY57mdyIKt0Dy61Cq/pub?embedded=true",
+        "date" : "14072017",
+        "rating" : "Unreadable"
+    },
+    {
+        "id" : 1,
+        "title" : "Enhanced",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vQkCadqn_vBm8SgapZubnMrQtZM2vp3GfOpabuLWyhsLb41GTK7xbiQojguUi8BLCWGkqvU5Qkbb57X/pub?embedded=true",
+        "date" : "27042016",
+        "rating" : "Unreadable"
+    },
+    {
+        "id" : 2,
+        "title" : "The Emerald King",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vRWwKOoNFXJ_MUDAEitGXz3Oo1OwyvA3ttLcomb2zyO5TNmOfV93WD3lBDcaoxY9CGWnqADUzDHbYKY/pub?embedded=true",
+        "date" : "26102015",
+        "rating" : "Terrible"
+    }
+
+]
