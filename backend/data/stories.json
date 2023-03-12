@@ -4,21 +4,34 @@
         "title" : "The Glass of Reality",
         "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vSLN-kj9_Hwekuam5Ud69tchbKXrqaiuea39vpAw5CapO69yjcCOQm8IMz2MfgKY57mdyIKt0Dy61Cq/pub?embedded=true",
         "date" : "14072017",
-        "rating" : "Unreadable"
+        "rating" : "Yikes",
+        "genre" : "Sci-fi",
+        "length" : "Novel",
+        "url": "https://docs.google.com/document/d/14S1zmzhTQx6gZ4EgoYs51WEe-Alkz7XxxcYLZvbs-eg/edit",
+        "img": "https://cdn.midjourney.com/f7a50eb0-382b-45b2-85ad-f32e7a353503/grid_0.png"
     },
     {
         "id" : 1,
         "title" : "Enhanced",
         "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vQkCadqn_vBm8SgapZubnMrQtZM2vp3GfOpabuLWyhsLb41GTK7xbiQojguUi8BLCWGkqvU5Qkbb57X/pub?embedded=true",
         "date" : "27042016",
-        "rating" : "Unreadable"
+        "rating" : "Yikes",
+        "genre" : "Sci-fi",
+        "length" : "Novel",
+        "url": "https://docs.google.com/document/d/1fWLXece9cnaGF62MG4TY8dBuqJ2_TyyCf2Exkma-flQ/edit",
+        "img": "https://cdn.midjourney.com/a1994641-4e03-44a9-a5ba-04ed2460163e/grid_0.png"
     },
     {
         "id" : 2,
         "title" : "The Emerald King",
         "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vRWwKOoNFXJ_MUDAEitGXz3Oo1OwyvA3ttLcomb2zyO5TNmOfV93WD3lBDcaoxY9CGWnqADUzDHbYKY/pub?embedded=true",
         "date" : "26102015",
-        "rating" : "Terrible"
+        "rating" : "Yikes",
+        "genre" : "Fantasy",
+        "length" : "Novella",
+        "url": "https://docs.google.com/document/d/1mVaBhl5pnpybkYW5xo1jaYyYfrDW0ouirw89nOk7EPc/edit",
+        "img": "https://cdn.midjourney.com/84c906bc-8e05-4435-9e06-757c7e4bd3d3/grid_0.png"
     }
+    
 
 ]

@@ -1,7 +1,8 @@
 from flask import jsonify, request, Response
-from models import app, db, File
+from models import app, db, Story
 from schema import stories_schema
-from sqlalchemy.sql import text, column
+from sqlalchemy import or_
+from sqlalchemy.sql import text, column, desc
 import json
 
 DEFAULT_PAGE_SIZE = 20
@@ -15,29 +16,87 @@ def home():
         error_text = "<p>The error:<br>" + str(e) + "</p>"
         hed = '<h1>Something is broken.</h1>'
         return hed + error_text
+    
+@app.route("/search/<string:query>")
+def search_all(query):
+    terms = query.split()
+    occurrences = {
+        **search_stories(terms),
+    }
+    objs = sorted(occurrences.keys(), key=lambda x: occurrences[x], reverse=True)
+    stories = [story for story in objs if type(story) == Story]
+    story_results = stories_schema.dump(stories, many=True)
+    return jsonify(
+        {"stories": story_results}
+    )
+
+@app.route("/search/<string:model>/<string:query>")
+def search_models(model, query):
+    model = model.strip().lower()
+    terms = query.split()
+    result = None
+    if model == "story":
+        occurrences = search_stories(terms)
+        stories = sorted(occurrences.keys(), key=lambda x: occurrences[x], reverse=True)
+        result = stories_schema.dump(stories, many=True)
+    else:
+        return_error(f"Invalid model: {model}")
+    return jsonify({"data": result})
+
+
+def search_stories(terms):
+    occurrences = {}
+    for term in terms:
+        queries = []
+        queries.append(Story.title.contains(term))
+        queries.append(Story.rating.contains(term))
+        stories = Story.query.filter(or_(*queries))
+        for story in stories:
+            if not story in occurrences:
+                occurrences[story] = 1
+            else:
+                occurrences[story] += 1
+    return occurrences
 
 @app.route("/stories")
 def get_stories():
     # get args
     page = request.args.get("page", type=int)
     perPage = request.args.get("perPage", type=int)
-    query = db.session.query(File)
+    query = db.session.query(Story)
     count = query.count()
-    if (page is not None):
+    rating = request.args.get("rating")
+    genre = request.args.get("genre")
+    length = request.args.get("length")
+    sort = request.args.get("sort")
+    asc = request.args.get("asc")
+
+    # FILTERING
+    if rating is not None:
+        rating.replace("and", "&")
+        query = query.filter(Story.rating == (rating))
+    if genre is not None:
+        genre.replace("and", "&")
+        query = query.filter(Story.genre == (genre))
+    if length is not None:
+        length.replace("and", "&")
+        query = query.filter(Story.length == (length))
+
+    # Sort
+    if sort is not None and getattr(Story, sort) is not None:
+        if asc is not None:
+            query = query.order_by(getattr(Story, sort))
+        else:
+            query = query.order_by(desc(getattr(Story, sort)))
+
+    if page is not None:
         query = paginate(query, page, perPage)
     result = stories_schema.dump(query, many=True)
-    return jsonify(
-        {
-            "data": result,
-            "meta": {
-                "count": count
-            }
-        }
-    )
+    return jsonify({"data": result, "meta": {"count": count}})
 
 @app.route("/stories/<int:r_id>")
 def get_player(r_id):
-    query = db.session.query(File).filter_by(id=r_id)
+    query = db.session.query(Story).filter_by(id=r_id)
     try:
         result = stories_schema.dump(query, many=True)[0]
     except IndexError:

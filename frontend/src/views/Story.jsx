@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-//import { ExternalLink } from "react-external-link";
+import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
 import story_placeholder from "../assets/logos/book.png";
 import Carousel from "react-bootstrap/Carousel";
@@ -70,7 +70,12 @@ const Story = () => {
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Written: {story.date}
-
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Genre: {story.genre}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Length: {story.length}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     <div>
@@ -78,13 +83,13 @@ const Story = () => {
                       </iframe>
                     </div>
                   </Typography>
-                  {/* <Typography variant="body"> will implemement later
+                  <Typography variant="body">
                     <li>
                       <ExternalLink href={story.url}>
                         <span>Story URL</span>
                       </ExternalLink>
                     </li>
-                  </Typography> */}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>

@@ -1,6 +1,6 @@
 import json
 import datetime
-from models import app, db, File
+from models import app, db, Story
 
 def populate_db():
     populate_stories()
@@ -14,9 +14,13 @@ def populate_stories():
                         "title" : stories["title"],
                         "gDocsLink" : stories["gDocsLink"],
                         "date" : datetime.datetime.strptime(stories["date"], "%d%m%Y").date(),
-                        "rating" : stories["rating" ]
+                        "rating" : stories["rating" ],
+                        "genre" : stories["genre"],
+                        "length" : stories["length"],
+                        "url" : stories["url"],
+                        "img" : stories["img"]
                 }
-                db.session.add(File(**db_row))
+                db.session.add(Story(**db_row))
             db.session.commit()
 
 

@@ -10,6 +10,10 @@ const StoryCard = (props) => {
     gDocsLink,
     date,
     rating,
+    genre,
+    length,
+    url,
+    img
   } = props.story;
   return (
     <Card>
@@ -20,16 +24,18 @@ const StoryCard = (props) => {
           width: "100%",
           objectFit: "contain",
         }}
-        src={story_placeholder}
+        src={img ? img : story_placeholder}
       ></Card.Img>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
-        <Card.Subtitle>Rating: {rating}</Card.Subtitle>
         <Card.Text>
-          Written: {date}
+          Rating: {rating} <br />
+          Written: {date}<br />
+          Genre: {genre}<br />
+          Length: {length}
         </Card.Text>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer style= {{backgroundColor: '#3d405b'}}>
         <Button
           className="btn btn-primary stretched-link"
           variant="dark"
