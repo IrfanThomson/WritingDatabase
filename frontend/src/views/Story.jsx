@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Button from "react-bootstrap/Button";
 import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
 import story_placeholder from "../assets/logos/book.png";
@@ -37,6 +38,7 @@ const Story = () => {
   }, [story]);
 
   return (
+
     <Container>
       <Typography
         gutterBottom
@@ -79,16 +81,24 @@ const Story = () => {
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     <div>
-                      <iframe src={story.gDocsLink} style={{ width: 1000, height:800 }}>
+                      <iframe src={story.gDocsLink} style={story.gDocsLink ? { width: 1000, height:800 } : {}}>
                       </iframe>
                     </div>
                   </Typography>
                   <Typography variant="body">
-                    <li>
+                  <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style={{
+                        marginTop: 20,
+                        backgroundColor: "lightgrey",
+                      }}
+                      href={story.url}
+                    >
                       <ExternalLink href={story.url}>
                         <span>Story URL</span>
                       </ExternalLink>
-                    </li>
+                    </Button>
                   </Typography>
                 </Grid>
               </Grid>

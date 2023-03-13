@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 import StoryCard from "../components/Cards/StoryCard";
 import Pagination from "react-bootstrap/Pagination";
-
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FilterDropdown from "../components/FilterDropdown";
@@ -174,7 +173,10 @@ const Stories = () => {
               items={[
                 "Genre",
                 "Sci-fi",
-                "Fantasy"
+                "Fantasy",
+                "Parody",
+                "Tragedy",
+                "Action"
               ]}
               scroll
               onChange={HandleGenreFilter}
@@ -187,6 +189,8 @@ const Stories = () => {
                 "Length",
                 "Novel",
                 "Novella",
+                "Short Story",
+                "Flash Fiction"
               ]}
               scroll
               onChange={HandleLengthFilter}

@@ -31,7 +31,74 @@
         "length" : "Novella",
         "url": "https://docs.google.com/document/d/1mVaBhl5pnpybkYW5xo1jaYyYfrDW0ouirw89nOk7EPc/edit",
         "img": "https://cdn.midjourney.com/84c906bc-8e05-4435-9e06-757c7e4bd3d3/grid_0.png"
+    },
+    {
+        "id" : 3,
+        "title" : "Speedrunner",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vR9tAQsunFNUKVcgDvTGzdIANcs7lEqIgk0AmGVwrMal9-kQ9MK74JUG9z9emNtlpeED5V0UHf5NNh2/pub?embedded=true",
+        "date" : "22012021",
+        "rating" : "Good",
+        "genre" : "Parody",
+        "length" : "Flash Fiction",
+        "url": "https://www.reddit.com/r/WritingPrompts/comments/l2atd6/wp_youre_the_final_boss_in_a_video_game_and_youve/gk4sk7h/?context=3",
+        "img": "https://cdn.midjourney.com/89abe236-967a-475d-959e-fc1b9f249cae/grid_0.png"
+    },
+    {
+        "id" : 4,
+        "title" : "Lockpicking the Underworld",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vTdgkr04WEMCSfrVlQSkpMtyyNTHlSMPJWXpPNgI9U-8oRoT0mkuXwaXTBO3IkuSOOXtFwUkexD-vc7/pub?embedded=true",
+        "date" : "17032021",
+        "rating" : "Good",
+        "genre" : "Parody",
+        "length" : "Flash Fiction",
+        "url": "https://www.reddit.com/r/WritingPrompts/comments/m70bt5/wp_never_in_10_millennia_has_someone_successfully/gr8v5j1/?context=3",
+        "img": "https://cdn.midjourney.com/0003d493-b919-45ef-ba35-74b36f23ea58/grid_0.png"
+    },
+    {
+        "id" : 5,
+        "title" : "Apocalypse Friend",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vTi0Mm00I13oH-dLxeVuQvjD-7XlAtgmXolHiq1n2b710CHKrmxk0K6H9Kt9SOrgteph6gpFhZ3i4cV/pub?embedded=true",
+        "date" : "02032021",
+        "rating" : "Good",
+        "genre" : "Fantasy",
+        "length" : "Flash Fiction",
+        "url": "https://www.reddit.com/r/WritingPrompts/comments/lw0h7j/wp_now_be_careful_that_line_of_rock_salt_is_the/gpf0gtx/?context=3",
+        "img": "https://cdn.midjourney.com/8722b800-b658-4bc3-b0d6-74e1bf689a40/grid_0.png"
+    },
+    {
+        "id" : 6,
+        "title" : "World-Ender's Humanity",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vQapt0UT7HyYgGT__haLaEigPk-o7BxCMe8QaCNyLgVETJCMGWA6JVtl_p3B3wzULxSNx6fujjxvee7/pub?embedded=true",
+        "date" : "19062021",
+        "rating" : "Good",
+        "genre" : "Fantasy",
+        "length" : "Flash Fiction",
+        "url": "https://www.reddit.com/r/WritingPrompts/comments/o3r9z1/wp_last_names_are_assigned_at_birth_by_an_oracle/h2dnu1s/?context=3",
+        "img": "https://cdn.midjourney.com/90148a5e-8d54-488e-b7cc-23c054169674/grid_0.png"
+    },
+    {
+        "id" : 7,
+        "title" : "Dog Buddy",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vSquTZnbpjgzIbpEqraM7UKsK_rQpXmFzC4K0-rdg5y75P8FgoPhrPGR97sOuMMTG12sPuEE_IJU5KG/pub?embedded=true",
+        "date" : "25062021",
+        "rating" : "Good",
+        "genre" : "Tragedy",
+        "length" : "Flash Fiction",
+        "url": "https://www.reddit.com/r/WritingPrompts/comments/o7shce/wp_from_the_point_of_view_of_dogs_humans_are_like/h31atfu/?context=3",
+        "img": "https://cdn.midjourney.com/5fb1b8be-33e9-466c-aa0a-74731cb03a42/grid_0.png"
+    },
+    {
+        "id" : 8,
+        "title" : "Father?",
+        "gDocsLink" : "https://docs.google.com/document/d/e/2PACX-1vSUO8R1EzBi8XSUDBjanbR0KBX7MMBUIrPbpmYgy91MV3Qf4bage_iFbSXMM758sB4y1Er9totiUSF0/pub?embedded=true",
+        "date" : "06032021",
+        "rating" : "Good",
+        "genre" : "Sci-fi",
+        "length" : "Flash Fiction",
+        "url": "https://www.reddit.com/r/WritingPrompts/comments/lz6nvc/wp_if_a_person_opts_into_brain_scans_during_life/gq09n1s/?context=3",
+        "img": "https://cdn.midjourney.com/18bec0fd-1433-48e6-8f56-63f179edc121/grid_0.png"
     }
-    
+
+
 
 ]
