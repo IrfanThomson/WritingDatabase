@@ -176,7 +176,8 @@ const Stories = () => {
                 "Fantasy",
                 "Parody",
                 "Tragedy",
-                "Action"
+                "Action",
+                "Comedy"
               ]}
               scroll
               onChange={HandleGenreFilter}

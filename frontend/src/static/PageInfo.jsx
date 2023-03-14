@@ -9,25 +9,25 @@ const pageInfo = [
         pageName: "Stories",
         pageImage: StoryImage,
         pageDescription: "See all archived stories.",
-        pageLink: "/cities",
+        pageLink: "/stories",
     },
     {
         pageName: "Story Ideas",
         pageImage: IdeasImage,
         pageDescription: "See all in-progress stories",
-        pageLink: "/apartments",
+        pageLink: "/ideas",
       },
       {
         pageName: "Writing Notes",
         pageImage: WritingImage,
         pageDescription: "See general writing notes",
-        pageLink: "/apartments",
+        pageLink: "/notes",
       },
       {
         pageName: "References",
         pageImage: ReferencesImage,
         pageDescription: "See analyses of popular stories",
-        pageLink: "/apartments",
+        pageLink: "/references",
       },
   ];
   
