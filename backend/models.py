@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 app.debug=True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:admin@writingdatabase.cluster-cpa1c490xrlk.us-east-1.rds.amazonaws.com'
 db = SQLAlchemy(app)
 
 class Story(db.Model):
