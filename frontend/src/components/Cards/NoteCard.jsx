@@ -3,16 +3,15 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import story_placeholder from "../../assets/logos/book.png";
 
-const StoryCard = (props) => {
+const NoteCard = (props) => {
   const {
     id,
     title,
     date,
     rating,
-    genre,
-    length,
+    category,
     img
-  } = props.story;
+  } = props.note;
   return (
     <Card>
       <Card.Img
@@ -29,15 +28,14 @@ const StoryCard = (props) => {
         <Card.Text>
           Rating: {rating} <br />
           Written: {date}<br />
-          Genre: {genre}<br />
-          Length: {length}
+          Genre: {category}
         </Card.Text>
       </Card.Body>
       <Card.Footer style= {{backgroundColor: '#3d405b'}}>
         <Button
           className="btn btn-primary stretched-link"
           variant="dark"
-          href={`/stories/${id}`}
+          href={`/notes/${id}`}
         >
           More Info
         </Button>
@@ -46,4 +44,4 @@ const StoryCard = (props) => {
   );
 };
 
-export default StoryCard;
+export default NoteCard;

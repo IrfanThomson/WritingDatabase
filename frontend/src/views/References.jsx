@@ -16,8 +16,8 @@ const client = axios.create({
 
 var queryRE = null;
 
-const Stories = () => {
-  const [stories, setStories] = useState([]);
+const References = () => {
+  const [references, setReferences] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
@@ -27,7 +27,7 @@ const Stories = () => {
   const [ascending, setAscending] = useState(false);
   const [rating, setRating] = useState("Rating");
   const [genre, setGenre] = useState("Genre");
-  const [length, setLength] = useState("Length");
+  const [medium, setMedium] = useState("Medium");
 
   const handleSortFilter = (value) => {
     setSort(value.toLowerCase().replace(" ", "_"));
@@ -41,8 +41,8 @@ const Stories = () => {
   const HandleGenreFilter = (value) => {
     setGenre(value);
   };
-  const HandleLengthFilter = (value) => {
-    setLength(value);
+  const HandleMediumFilter = (value) => {
+    setMedium(value);
   };
 
   function handleClick(number) {
@@ -51,11 +51,11 @@ const Stories = () => {
   }
 
   useEffect(() => {
-    const fetchStories = async () => {
+    const fetchReferences = async () => {
       if (!loaded) {
-        var query = `stories?page=${activePage}&perPage=20`;
+        var query = `references?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
-          query = `search/story/${searchQuery.current.value}`;
+          query = `search/reference/${searchQuery.current.value}`;
           queryRE = new RegExp(
             `(?:${searchQuery.current.value.replaceAll(" ", "|")})`,
             "i"
@@ -74,8 +74,8 @@ const Stories = () => {
           if (genre != "Genre") {
             query += `&genre=${genre}`;
           }
-          if (length != "Length") {
-            query += `&length=${length}`;
+          if (medium != "Medium") {
+            query += `&medium=${medium}`;
           }
         }
 
@@ -83,14 +83,14 @@ const Stories = () => {
         await client
           .get(query)
           .then((response) => {
-            setStories(response.data);
+            setReferences(response.data);
           })
           .catch((err) => console.log(err));
         setLoaded(true);
       }
     };
-    fetchStories();
-  }, [stories, loaded]);
+    fetchReferences();
+  }, [references, loaded]);
 
   let numPages = 1000 / 20;
   let items = [];
@@ -110,7 +110,7 @@ const Stories = () => {
 
   return (
     <Container>
-      <h1 className="p-5 text-center">Stories</h1>
+      <h1 className="p-5 text-center">References</h1>
       <Form
         onSubmit={(event) => {
           event.preventDefault();
@@ -122,7 +122,7 @@ const Stories = () => {
           ref={searchQuery}
           style={{ width: "20vw" }}
           type="search"
-          placeholder="Search stories"
+          placeholder="Search references"
           className="me-2"
           aria-label="Search"
         />
@@ -189,16 +189,12 @@ const Stories = () => {
           </Col>
           <Col>
             <FilterDropdown
-              title="Length"
+              title="Medium"
               items={[
-                "Length",
-                "Novel",
-                "Novella",
-                "Short Story",
-                "Flash Fiction"
+                "Animanga"
               ]}
               scroll
-              onChange={HandleLengthFilter}
+              onChange={HandleMediumFilter}
             />
           </Col>
         </Row>
@@ -248,10 +244,10 @@ const Stories = () => {
         className="d-flex g-4 p-5 justify-content-center"
       >
         {loaded ? (
-          stories["data"].map((story) => {
+          references["data"].map((reference) => {
             return (
-              <Col key={story.id} className="d-flex align-self-stretch">
-                <StoryCard story={story} regex={queryRE} />
+              <Col key={reference.id} className="d-flex align-self-stretch">
+                <StoryCard reference={reference} regex={queryRE} />
               </Col>
             );
           })
@@ -288,4 +284,4 @@ const Stories = () => {
   );
 };
 
-export default Stories;
+export default References;

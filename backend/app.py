@@ -1,7 +1,7 @@
 from flask import jsonify, request, Response
-from models import app, db, Story
-from schema import stories_schema
-from sqlalchemy import or_
+from models import app, db, Story, Note, Reference
+from schema import stories_schema, notes_schema, references_schema
+from sqlalchemy import or_, case
 from sqlalchemy.sql import text, column, desc
 import json
 
@@ -22,12 +22,18 @@ def search_all(query):
     terms = query.split()
     occurrences = {
         **search_stories(terms),
+        **search_notes(terms),
+        **search_references(terms)
     }
     objs = sorted(occurrences.keys(), key=lambda x: occurrences[x], reverse=True)
     stories = [story for story in objs if type(story) == Story]
     story_results = stories_schema.dump(stories, many=True)
+    notes = [note for note in objs if type(note) == Note]
+    note_results = notes_schema.dump(notes, many=True)
+    references = [reference for reference in objs if type(reference) == Reference]
+    reference_results = stories_schema.dump(references, many=True)
     return jsonify(
-        {"stories": story_results}
+        {"stories": story_results, "notes": note_results, "references:":reference_results}
     )
 
 @app.route("/search/<string:model>/<string:query>")
@@ -39,6 +45,14 @@ def search_models(model, query):
         occurrences = search_stories(terms)
         stories = sorted(occurrences.keys(), key=lambda x: occurrences[x], reverse=True)
         result = stories_schema.dump(stories, many=True)
+    if model == "note":
+        occurrences = search_notes(terms)
+        notes = sorted(occurrences.keys(), key=lambda x: occurrences[x], reverse=True)
+        result = notes_schema.dump(notes, many=True)
+    if model == "reference":
+        occurrences = search_stories(terms)
+        references = sorted(occurrences.keys(), key=lambda x: occurrences[x], reverse=True)
+        result = references_schema.dump(references, many=True)
     else:
         return_error(f"Invalid model: {model}")
     return jsonify({"data": result})
@@ -58,6 +72,34 @@ def search_stories(terms):
                 occurrences[story] += 1
     return occurrences
 
+def search_notes(terms):
+    occurrences = {}
+    for term in terms:
+        queries = []
+        queries.append(Note.title.contains(term))
+        queries.append(Note.rating.contains(term))
+        notes = Note.query.filter(or_(*queries))
+        for note in notes:
+            if not note in occurrences:
+                occurrences[note] = 1
+            else:
+                occurrences[note] += 1
+    return occurrences
+
+def search_references(terms):
+    occurrences = {}
+    for term in terms:
+        queries = []
+        queries.append(Reference.title.contains(term))
+        queries.append(Reference.rating.contains(term))
+        references = Reference.query.filter(or_(*queries))
+        for reference in references:
+            if not reference in occurrences:
+                occurrences[reference] = 1
+            else:
+                occurrences[reference] += 1
+    return occurrences
+
 @app.route("/stories")
 def get_stories():
     # get args
@@ -73,13 +115,10 @@ def get_stories():
 
     # FILTERING
     if rating is not None:
-        rating.replace("and", "&")
         query = query.filter(Story.rating == (rating))
     if genre is not None:
-        genre.replace("and", "&")
         query = query.filter(Story.genre == (genre))
     if length is not None:
-        length.replace("and", "&")
         query = query.filter(Story.length == (length))
 
     # Sort
@@ -88,6 +127,8 @@ def get_stories():
             query = query.order_by(getattr(Story, sort))
         else:
             query = query.order_by(desc(getattr(Story, sort)))
+    else:
+        query = query.order_by(desc(Story.rating))
 
     if page is not None:
         query = paginate(query, page, perPage)
@@ -95,10 +136,95 @@ def get_stories():
     return jsonify({"data": result, "meta": {"count": count}})
 
 @app.route("/stories/<int:r_id>")
-def get_player(r_id):
+def get_story(r_id):
     query = db.session.query(Story).filter_by(id=r_id)
     try:
         result = stories_schema.dump(query, many=True)[0]
+    except IndexError:
+        return return_error(f"Invalid story ID: {r_id}")
+    return jsonify({
+        "data": result
+    })
+
+@app.route("/notes")
+def get_notes():
+    # get args
+    page = request.args.get("page", type=int)
+    perPage = request.args.get("perPage", type=int)
+    query = db.session.query(Note)
+    count = query.count()
+    rating = request.args.get("rating")
+    category = request.args.get("category")
+    sort = request.args.get("sort")
+    asc = request.args.get("asc")
+
+    # FILTERING
+    if rating is not None:
+        query = query.filter(Note.rating == (rating))
+    if category is not None:
+        query = query.filter(Note.category == (category))
+
+    # Sort
+    if sort is not None and getattr(Note, sort) is not None:
+        if asc is not None:
+            query = query.order_by(getattr(Note, sort))
+        else:
+            query = query.order_by(desc(getattr(Note, sort)))
+
+    if page is not None:
+        query = paginate(query, page, perPage)
+    result = notes_schema.dump(query, many=True)
+    return jsonify({"data": result, "meta": {"count": count}})
+
+@app.route("/notes/<int:r_id>")
+def get_note(r_id):
+    query = db.session.query(Note).filter_by(id=r_id)
+    try:
+        result = notes_schema.dump(query, many=True)[0]
+    except IndexError:
+        return return_error(f"Invalid story ID: {r_id}")
+    return jsonify({
+        "data": result
+    })
+
+@app.route("/references")
+def get_references():
+    # get args
+    page = request.args.get("page", type=int)
+    perPage = request.args.get("perPage", type=int)
+    query = db.session.query(Reference)
+    count = query.count()
+    rating = request.args.get("rating")
+    genre = request.args.get("genre")
+    medium = request.args.get("medium")
+    sort = request.args.get("sort")
+    asc = request.args.get("asc")
+
+    # FILTERING
+    if rating is not None:
+        query = query.filter(Reference.rating == (rating))
+    if genre is not None:
+        query = query.filter(Reference.genre == (genre))
+    if medium is not None:
+        query = query.filter(Reference.medium == (medium))
+
+    # Sort
+    if sort is not None and getattr(Reference, sort) is not None:
+        if asc is not None:
+            query = query.order_by(getattr(Reference, sort))
+        else:
+            query = query.order_by(desc(getattr(Reference, sort)))
+
+    if page is not None:
+        query = paginate(query, page, perPage)
+    result = references_schema.dump(query, many=True)
+    return jsonify({"data": result, "meta": {"count": count}})
+
+@app.route("/references/<int:r_id>")
+def get_reference(r_id):
+    query = db.session.query(Reference).filter_by(id=r_id)
+    try:
+        result = references_schema.dump(query, many=True)[0]
     except IndexError:
         return return_error(f"Invalid story ID: {r_id}")
     return jsonify({

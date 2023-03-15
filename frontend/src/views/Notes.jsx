@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import StoryCard from "../components/Cards/StoryCard";
+import NoteCard from "../components/Cards/NoteCard";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -16,8 +16,8 @@ const client = axios.create({
 
 var queryRE = null;
 
-const Stories = () => {
-  const [stories, setStories] = useState([]);
+const Notes = () => {
+  const [notes, setNotes] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
@@ -26,8 +26,7 @@ const Stories = () => {
   const [sort, setSort] = useState("sort");
   const [ascending, setAscending] = useState(false);
   const [rating, setRating] = useState("Rating");
-  const [genre, setGenre] = useState("Genre");
-  const [length, setLength] = useState("Length");
+  const [category, setCategory] = useState("Category");
 
   const handleSortFilter = (value) => {
     setSort(value.toLowerCase().replace(" ", "_"));
@@ -38,11 +37,8 @@ const Stories = () => {
   const HandleRatingFilter = (value) => {
     setRating(value);
   };
-  const HandleGenreFilter = (value) => {
-    setGenre(value);
-  };
-  const HandleLengthFilter = (value) => {
-    setLength(value);
+  const HandleCategoryFilter = (value) => {
+    setCategory(value);
   };
 
   function handleClick(number) {
@@ -51,11 +47,11 @@ const Stories = () => {
   }
 
   useEffect(() => {
-    const fetchStories = async () => {
+    const fetchNotes = async () => {
       if (!loaded) {
-        var query = `stories?page=${activePage}&perPage=20`;
+        var query = `notes?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
-          query = `search/story/${searchQuery.current.value}`;
+          query = `search/note/${searchQuery.current.value}`;
           queryRE = new RegExp(
             `(?:${searchQuery.current.value.replaceAll(" ", "|")})`,
             "i"
@@ -71,11 +67,8 @@ const Stories = () => {
           if (rating != "Rating") {
             query += `&rating=${rating}`;
           }
-          if (genre != "Genre") {
-            query += `&genre=${genre}`;
-          }
-          if (length != "Length") {
-            query += `&length=${length}`;
+          if (category != "Category") {
+            query += `&category=${category}`;
           }
         }
 
@@ -83,14 +76,14 @@ const Stories = () => {
         await client
           .get(query)
           .then((response) => {
-            setStories(response.data);
+            setNotes(response.data);
           })
           .catch((err) => console.log(err));
         setLoaded(true);
       }
     };
-    fetchStories();
-  }, [stories, loaded]);
+    fetchNotes();
+  }, [notes, loaded]);
 
   let numPages = 1000 / 20;
   let items = [];
@@ -110,7 +103,7 @@ const Stories = () => {
 
   return (
     <Container>
-      <h1 className="p-5 text-center">Stories</h1>
+      <h1 className="p-5 text-center">Notes</h1>
       <Form
         onSubmit={(event) => {
           event.preventDefault();
@@ -122,7 +115,7 @@ const Stories = () => {
           ref={searchQuery}
           style={{ width: "20vw" }}
           type="search"
-          placeholder="Search stories"
+          placeholder="Search notes"
           className="me-2"
           aria-label="Search"
         />
@@ -173,32 +166,13 @@ const Stories = () => {
           </Col>
           <Col>
             <FilterDropdown
-              title="Genre"
+              title="Category"
               items={[
-                "Genre",
-                "Sci-fi",
-                "Fantasy",
-                "Parody",
-                "Tragedy",
-                "Action",
-                "Comedy"
+                "Category",
+                "Creativitiy and Ideas"
               ]}
               scroll
-              onChange={HandleGenreFilter}
-            />
-          </Col>
-          <Col>
-            <FilterDropdown
-              title="Length"
-              items={[
-                "Length",
-                "Novel",
-                "Novella",
-                "Short Story",
-                "Flash Fiction"
-              ]}
-              scroll
-              onChange={HandleLengthFilter}
+              onChange={HandleCategoryFilter}
             />
           </Col>
         </Row>
@@ -248,10 +222,10 @@ const Stories = () => {
         className="d-flex g-4 p-5 justify-content-center"
       >
         {loaded ? (
-          stories["data"].map((story) => {
+          notes["data"].map((note) => {
             return (
-              <Col key={story.id} className="d-flex align-self-stretch">
-                <StoryCard story={story} regex={queryRE} />
+              <Col key={note.id} className="d-flex align-self-stretch">
+                <NoteCard note={note} regex={queryRE} />
               </Col>
             );
           })
@@ -288,4 +262,4 @@ const Stories = () => {
   );
 };
 
-export default Stories;
+export default Notes;

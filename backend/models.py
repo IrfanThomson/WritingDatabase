@@ -14,10 +14,39 @@ class Story(db.Model):
     title = db.Column(db.String(50))
     gDocsLink = db.Column(db.String(300))
     date = db.Column(db.Date)
-    rating = db.Column(db.String(20))
+    rating = db.Column(db.Integer)
     genre = db.Column(db.String(20))
     length = db.Column(db.String(20))
     url = db.Column(db.String(300))
     img = db.Column(db.String(300))
-    #add tags and cover image in the future
 
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50))
+    gDocsLink = db.Column(db.String(300))
+    date = db.Column(db.Date)
+    rating = db.Column(db.Integer)
+    category = db.Column(db.String(20))
+    url = db.Column(db.String(300))
+    img = db.Column(db.String(300))
+
+class Reference(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50))
+    gDocsLink = db.Column(db.String(300))
+    date = db.Column(db.Date)
+    rating = db.Column(db.Integer)
+    genre = db.Column(db.String(20))
+    medium = db.Column(db.String(20))
+    url = db.Column(db.String(300))
+    img = db.Column(db.String(300))
+
+class Idea(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50))
+    gDocsLink = db.Column(db.String(300))
+    date = db.Column(db.Date)
+    rating = db.Column(db.Integer)
+    genre = db.Column(db.String(20))
+    url = db.Column(db.String(300))
+    img = db.Column(db.String(300))

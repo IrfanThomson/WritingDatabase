@@ -1,7 +1,7 @@
-import StoryImage from "../assets/page-images/chrome.jpg";
-import IdeasImage from "../assets/page-images/swordhero.png";
-import WritingImage from "../assets/page-images/rift.png";
-import ReferencesImage from "../assets/page-images/orb.png";
+import StoryImage from "../assets/page-images/stories.png";
+import IdeasImage from "../assets/page-images/ideas.png";
+import WritingImage from "../assets/page-images/notes.png";
+import ReferencesImage from "../assets/page-images/suitguy.png";
 
 
 const pageInfo = [
