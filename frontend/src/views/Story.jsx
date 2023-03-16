@@ -14,7 +14,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 
 const client = axios.create({
-  baseURL: "http://127.0.0.1:5000/",
+  baseURL: "http://api.writingdatabase.me/",
 });
 
 const Story = () => {
