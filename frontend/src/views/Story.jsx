@@ -14,7 +14,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 
 const client = axios.create({
-  baseURL: "http://Writingdbapi-env.eba-vtybcddb.us-east-1.elasticbeanstalk.com",
+  baseURL: "https://cors-everywhere.herokuapp.com/http://Writingdbapi-env.eba-vtybcddb.us-east-1.elasticbeanstalk.com",
 });
 
 const Story = () => {

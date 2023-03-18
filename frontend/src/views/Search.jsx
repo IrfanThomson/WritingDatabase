@@ -12,7 +12,7 @@ const Search = () => {
   const userQuery = location.pathname.split("/search/").at(-1);
   const queryRE = new RegExp(`(?:${userQuery.replaceAll("%20", "|")})`, "i");
   const client = axios.create({
-    baseURL: "http://Writingdbapi-env.eba-vtybcddb.us-east-1.elasticbeanstalk.com",
+    baseURL: "https://cors-everywhere.herokuapp.com/http://Writingdbapi-env.eba-vtybcddb.us-east-1.elasticbeanstalk.com",
   });
 
   // load data from query
