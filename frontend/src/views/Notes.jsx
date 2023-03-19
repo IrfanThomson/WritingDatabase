@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import FilterDropdown from "../components/FilterDropdown";
 
 const client = axios.create({
-  baseURL: "http://127.0.0.1:5000/",
+  baseURL: "http://writingdatabase.me/api/",
 });
 
 var queryRE = null;
