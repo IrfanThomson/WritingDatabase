@@ -12,7 +12,7 @@ const Search = () => {
   const userQuery = location.pathname.split("/search/").at(-1);
   const queryRE = new RegExp(`(?:${userQuery.replaceAll("%20", "|")})`, "i");
   const client = axios.create({
-    baseURL: "http://writingdatabase.me/api/",
+    baseURL: "https://writingdatabase.me/api/",
   });
 
   // load data from query
