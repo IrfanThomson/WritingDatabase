@@ -8,3 +8,4 @@ marshmallow-sqlalchemy
 flask-cors
 jsonschema
 requests
+waitress
