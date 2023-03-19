@@ -6,11 +6,11 @@ app = Flask(__name__)
 CORS(app)
 app.debug=True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://remote:Zer0bugs!@35.153.198.105'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///writingdb.db'
 db = SQLAlchemy(app)
 
 class Story(db.Model):
-    __table_args__ = {'schema':'Stories'}
+    # __table_args__ = {'schema':'Stories'}
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50))
     gDocsLink = db.Column(db.String(300))
@@ -22,7 +22,7 @@ class Story(db.Model):
     img = db.Column(db.String(300))
 
 class Note(db.Model):
-    __table_args__ = {'schema':'Notes'}
+    # __table_args__ = {'schema':'Notes'}
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50))
     gDocsLink = db.Column(db.String(300))
@@ -33,7 +33,7 @@ class Note(db.Model):
     img = db.Column(db.String(300))
 
 class Reference(db.Model):
-    __table_args__ = {'schema':'References'}
+    # __table_args__ = {'schema':'References'}
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50))
     gDocsLink = db.Column(db.String(300))
@@ -45,7 +45,7 @@ class Reference(db.Model):
     img = db.Column(db.String(300))
 
 class Idea(db.Model):
-    __table_args__ = {'schema':'Ideas'}
+    # __table_args__ = {'schema':'Ideas'}
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50))
     gDocsLink = db.Column(db.String(300))
