@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import FilterDropdown from "../components/FilterDropdown";
 
 const client = axios.create({
-  baseURL: "https://cors-everywhere.herokuapp.com/http://Writingdbapi-env.eba-vtybcddb.us-east-1.elasticbeanstalk.com",
+  baseURL: "http://127.0.0.1:5000/",
 });
 
 var queryRE = null;
