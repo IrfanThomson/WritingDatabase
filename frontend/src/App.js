@@ -5,10 +5,12 @@ import RouteSwitch from "./RouteSwitch";
 const App = () => {
   return (
     <div>
-      <GlobalNavbar />
       <RouteSwitch />
     </div>
   );
 };
 
+/*
+      <GlobalNavbar />
+*/
 export default App;
