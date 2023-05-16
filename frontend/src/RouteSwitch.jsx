@@ -13,6 +13,15 @@ const RouteSwitch = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Stories />} />
+        <Route path="/stories" element={<Stories />} />
+        <Route path="/stories/:id" element={<Story />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+/* Work in progress
         <Route path="/" element={<Home />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/stories/:id" element={<Story />} />
@@ -21,9 +30,6 @@ const RouteSwitch = () => {
         <Route path="/references" element={<References />} />
         <Route path="/references/:id" element={<Reference />} />
         <Route path="/search/:query" element={<Search />} /> 
-      </Routes>
-    </BrowserRouter>
-  );
-};
+*/
 
 export default RouteSwitch;

@@ -38,9 +38,6 @@ const GlobalNavbar = () => {
             <Nav.Link href="/"><BoldText>Home</BoldText></Nav.Link>
             <Nav.Link href="/about"><BoldText>About</BoldText></Nav.Link>
             <Nav.Link href="/stories"><BoldText>Stories</BoldText></Nav.Link>
-            <Nav.Link href="/ideas"><BoldText>Ideas</BoldText></Nav.Link>
-            <Nav.Link href="/notes"><BoldText>Notes</BoldText></Nav.Link>
-            <Nav.Link href="/references"><BoldText>References</BoldText></Nav.Link>
           </Nav>
           <Container className="d-flex justify-content-end">
             <Form onSubmit={handleSubmit} className="d-flex">
@@ -60,5 +57,11 @@ const GlobalNavbar = () => {
     </Navbar>
   );
 };
+
+/* Work in progress
+            <Nav.Link href="/ideas"><BoldText>Ideas</BoldText></Nav.Link>
+            <Nav.Link href="/notes"><BoldText>Notes</BoldText></Nav.Link>
+            <Nav.Link href="/references"><BoldText>References</BoldText></Nav.Link>
+*/
 
 export default GlobalNavbar;

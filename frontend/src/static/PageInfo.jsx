@@ -12,6 +12,13 @@ const pageInfo = [
         pageLink: "/stories",
     },
     {
+      pageName: "About",
+      pageImage: WritingImage,
+      pageDescription: "Learn about the author.",
+      pageLink: "/about",
+  },
+    /* Work in progress
+    {
         pageName: "Story Ideas",
         pageImage: IdeasImage,
         pageDescription: "See all in-progress stories",
@@ -28,7 +35,7 @@ const pageInfo = [
         pageImage: ReferencesImage,
         pageDescription: "See analyses of popular stories",
         pageLink: "/references",
-      },
+      },*/
   ];
   
   export { pageInfo };

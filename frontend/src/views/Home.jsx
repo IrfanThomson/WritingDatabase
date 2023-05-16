@@ -16,7 +16,7 @@ const Home = () => {
           backgroundImage: `url(${Background})`,
           // backgroundSize: "cover",
           width: "100%",
-          height: "80vh",
+          height: "90vh",
         }}
       >
         <h1
@@ -29,7 +29,7 @@ const Home = () => {
             marginTop: "300px",
           }}
         >
-          WW's creative writing archive.
+          Explore original internet fiction stories.
         </h1>
       </div>
       <Container className="p-4">
